@@ -291,5 +291,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseColor: {fileID: 2100000, guid: 2a2ceeff3492920408237056f565085f, type: 2}
-  _offsetColor: {fileID: 2100000, guid: d442475603e6ffa49b79a15b16968f7b, type: 2}
+  _offsetColor: {fileID: 2100000, guid: 2a2ceeff3492920408237056f565085f, type: 2}
   _renderer: {fileID: 6289924279506378506}
