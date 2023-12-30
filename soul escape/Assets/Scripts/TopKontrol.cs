@@ -64,12 +64,12 @@ public class TopKontrol : MonoBehaviour
 
     void Firlat()
     {
-        // Topu fýrlatma yönüne ayarla
+        // Topu fï¿½rlatma yï¿½nï¿½ne ayarla
         firlatmaYonu = new Vector3(-_deltaX, -_deltaY, 0f).normalized;
 
-        // Fýrlatma iþlemi
+        // Fï¿½rlatma iï¿½lemi
         firlatmaModu = false;
-        topRigidbody.velocity = firlatmaYonu * speed;
+        topRigidbody.velocity = firlatmaYonu.normalized * speed;
         topRigidbody.angularVelocity = Vector3.zero;
     }
 
@@ -85,14 +85,25 @@ public class TopKontrol : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 7)
+        if (collision.gameObject.layer == 7 )
         {
             WallScript wallScript = collision.gameObject.GetComponent<WallScript>();
             if (wallScript != null)
             {
                 firlatmaYonu = Vector3.Reflect(firlatmaYonu, wallScript.normal);
 
-                topRigidbody.velocity = firlatmaYonu * speed;
+                topRigidbody.velocity = firlatmaYonu.normalized * speed;
+                topRigidbody.angularVelocity = Vector3.zero;
+            }
+        }
+        else if (collision.gameObject.CompareTag("Tile"))
+        {
+            WallScript wallScript = collision.gameObject.GetComponent<WallScript>();
+            if (wallScript != null)
+            {
+                firlatmaYonu = Vector3.Reflect(firlatmaYonu, wallScript.normal);
+
+                topRigidbody.velocity = firlatmaYonu.normalized * speed;
                 topRigidbody.angularVelocity = Vector3.zero;
             }
         }

@@ -20,10 +20,10 @@ public class GridManager : MonoBehaviour
     }
     void Update() {
 
-        if(Input.GetMouseButtonDown(0)){
+        /*if(Input.GetMouseButtonDown(0)){
             ShiftPrefabsDown();
             updateGrid();
-        }
+        }*/
         
     }
     void generateGrid()
