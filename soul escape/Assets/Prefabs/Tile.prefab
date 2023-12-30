@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 6289924279506378506}
   - component: {fileID: 3597330317181588833}
   - component: {fileID: 3094817886649104227}
+  - component: {fileID: 4571888427376943488}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Tile
@@ -293,3 +294,21 @@ MonoBehaviour:
   _baseColor: {fileID: 2100000, guid: 2a2ceeff3492920408237056f565085f, type: 2}
   _offsetColor: {fileID: 2100000, guid: 2a2ceeff3492920408237056f565085f, type: 2}
   _renderer: {fileID: 6289924279506378506}
+--- !u!114 &4571888427376943488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5732039016850014694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 3.11
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
