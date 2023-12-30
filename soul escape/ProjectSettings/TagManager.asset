@@ -8,6 +8,7 @@ TagManager:
   - End
   - Plus
   - Ball
+  - EndLine
   layers:
   - Default
   - TransparentFX

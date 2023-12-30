@@ -630,7 +630,7 @@ PrefabInstance:
     - target: {fileID: 3337012693042505708, guid: 02561ad034fe5a44e838451065693b81,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.37
+      value: 1.168
       objectReference: {fileID: 0}
     - target: {fileID: 3337012693042505708, guid: 02561ad034fe5a44e838451065693b81,
         type: 3}
@@ -672,6 +672,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6842080253190259784, guid: 02561ad034fe5a44e838451065693b81,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d442475603e6ffa49b79a15b16968f7b, type: 2}
     - target: {fileID: 7364545734405661671, guid: 02561ad034fe5a44e838451065693b81,
         type: 3}
       propertyPath: m_Name
@@ -1135,7 +1140,7 @@ Transform:
   m_GameObject: {fileID: 1302669471}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.16, y: 0.99, z: -0.076}
+  m_LocalPosition: {x: -8.82, y: 0.99, z: -0.076}
   m_LocalScale: {x: 6.582561, y: 0.31182, z: 1.4039}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1431,6 +1436,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5812027934010002935, guid: 1e0e5df99868fb04984ae9d84de4d332,
+        type: 3}
+      propertyPath: m_TagString
+      value: EndLine
+      objectReference: {fileID: 0}
     - target: {fileID: 8516567545281422506, guid: 1e0e5df99868fb04984ae9d84de4d332,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1533,11 +1543,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _width: 5
   _height: 8
-  _tilePrefab1: {fileID: 2972007546996227591, guid: 8db30123ade3c3b41a44595e05b7ce23,
+  _tilePrefab1: {fileID: 64799941422236751, guid: 8e3c30238b7afa442a3152465aa19912,
     type: 3}
   _tilePrefab2: {fileID: 5732039016850014694, guid: ba33462020649004d975c72e82fb1ddd,
     type: 3}
-  _tilePrefab3: {fileID: 2972007546996227591, guid: 3da33354fb87a6840b650d897f9645db,
+  _tilePrefab3: {fileID: 1338176292945111299, guid: c873a38b650abeb419cf7dd7ed568fb9,
     type: 3}
   _plusBall: {fileID: 5732039016850014694, guid: a54fcb63ef868f14791595338d4882d4,
     type: 3}

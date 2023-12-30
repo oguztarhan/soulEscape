@@ -20,10 +20,8 @@ public class GridManager : MonoBehaviour
     }
     void Update() {
 
-        /*if(Input.GetMouseButtonDown(0)){
-            ShiftPrefabsDown();
-            updateGrid();
-        }*/
+        
+        
         
     }
     void generateGrid()
@@ -83,7 +81,7 @@ public class GridManager : MonoBehaviour
 
         _cam.transform.position = new Vector3((float)_width / 2 - 0.5f, (float)_height / 2 - 0.5f, -10f);
     }
-     void ShiftPrefabsDown()
+     public void ShiftPrefabsDown()
 {
     GameObject[] allTiles = GameObject.FindGameObjectsWithTag("Tile");
     GameObject[] allPlus = GameObject.FindGameObjectsWithTag("Plus");
@@ -101,7 +99,7 @@ public class GridManager : MonoBehaviour
 }
 
 
-    private void updateGrid()
+    public void updateGrid()
     {
         
          for (int x = 0; x < _width; x++)
@@ -154,6 +152,36 @@ public class GridManager : MonoBehaviour
         
         previousTextValue = Mathf.Min(previousTextValue + hitPointIncrease);
         textMesh.text = previousTextValue.ToString();
+    }
+    tileHitPoints=previousTextValue;
+    
+}
+int tileHitPoints;
+private void OnCollisionEnter(Collision collision)
+{
+ 
+    if(collision.gameObject.CompareTag("Ball"))
+    {
+        tileHitPoints--;
+        if(tileHitPoints<=0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    else if(collision.gameObject.CompareTag("EndLine"))
+    {
+       
+    
+            GridManager gridManager = FindObjectOfType<GridManager>();
+            BallManager ballManager = FindObjectOfType<BallManager>();
+
+            if (gridManager != null)
+                gridManager.enabled = false;
+
+            if (ballManager != null)
+                ballManager.enabled = false;
+        
+        
     }
 }
 
