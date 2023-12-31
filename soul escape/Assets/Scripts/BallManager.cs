@@ -12,7 +12,7 @@ public class BallManager : MonoBehaviour
     private Vector3 mouseUpPosition;
     public int ballCount;
     [SerializeField] private GameObject _ballPrefab;
-
+   
     [SerializeField, Range(0f, 250f)] private float speed;
     
     
@@ -39,20 +39,23 @@ public class BallManager : MonoBehaviour
     void OnMouseDown()
     {
         mouseDownPosition = Input.mousePosition;
+        
+        
     }
 
     void OnMouseUp()
     {
         mouseUpPosition = Input.mousePosition;
+       
         Firlat();
     }
 
     void Firlat()
     {
-        for (int i = 0; i <= ballCount; i++)
+       /* for (int i = 0; i <= ballCount; i++)
         {
             Instantiate(_ballPrefab,firstPosition,Quaternion.identity);
-        }
+        }*/
         Vector3 fark = mouseUpPosition - mouseDownPosition;
         firlatmaYonu = new Vector3(fark.x, fark.y, 0).normalized;
         topRigidbody.velocity = firlatmaYonu * speed;
