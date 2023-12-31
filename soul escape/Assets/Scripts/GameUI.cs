@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class GameUI : MonoBehaviour
 {
+    private Rigidbody topRigidbody;
+    private Vector3 firstPosition;
+    private int ballCount;
     private void OnCollisionEnter(Collision collision) {
         
         if(collision.gameObject.CompareTag("Tile"))
         {
             endGame();
         }
+        
     }
-
     private void endGame()
     {
         Debug.Log("GAME OVER!");

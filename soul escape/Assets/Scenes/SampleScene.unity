@@ -353,6 +353,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e254bd5fed660074f8fe50bb70376d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstPosition: {x: 0, y: 0, z: 0}
+  ballCount: 0
+  _ballPrefab: {fileID: 380135875}
   speed: 15
 --- !u!1 &410087039
 GameObject:
