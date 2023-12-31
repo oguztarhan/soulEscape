@@ -12,6 +12,7 @@ public class BallManager : MonoBehaviour
     private Vector3 mouseUpPosition;
 
     [SerializeField, Range(0f, 250f)] private float speed;
+    
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class BallManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+       if (Input.GetMouseButtonDown(0))
         {
             OnMouseDown();
         }

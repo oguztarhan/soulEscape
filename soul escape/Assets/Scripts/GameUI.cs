@@ -18,6 +18,15 @@ public class GameUI : MonoBehaviour
         Debug.Log("GAME OVER!");
         //Time.timeScale=0f;
         GridManager gridManager = FindObjectOfType<GridManager>();
+        BallManager ballManager = FindAnyObjectByType<BallManager>();
+       
+       if (gridManager!=null)
+       {
         gridManager.gameObject.SetActive(false);
+       } 
+       if (ballManager!=null)
+       {
+        ballManager.gameObject.SetActive(false);
+       }
     }
 }
