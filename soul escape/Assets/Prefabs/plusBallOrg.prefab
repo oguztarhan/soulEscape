@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2968468446854476770}
   - component: {fileID: 6289924279506378506}
   - component: {fileID: 3597330317181588833}
-  - component: {fileID: -7339365442167316908}
   m_Layer: 0
   m_Name: plusBallOrg
   m_TagString: Plus
@@ -106,16 +105,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-7339365442167316908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5732039016850014694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e254bd5fed660074f8fe50bb70376d8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
