@@ -18,12 +18,7 @@ public class GridManager : MonoBehaviour
       void Start() {
         generateGrid();
     }
-    void Update() {
-
-        
-        
-        
-    }
+    
     void generateGrid()
     {
        
@@ -142,6 +137,8 @@ public class GridManager : MonoBehaviour
                 
         }
         
+        
+    
          
     }
  private void UpdateTileText(GameObject tile, int hitPointIncrease)
@@ -168,21 +165,7 @@ private void OnCollisionEnter(Collision collision)
             Destroy(gameObject);
         }
     }
-    else if(collision.gameObject.CompareTag("EndLine"))
-    {
-       
     
-            GridManager gridManager = FindObjectOfType<GridManager>();
-            BallManager ballManager = FindObjectOfType<BallManager>();
-
-            if (gridManager != null)
-                gridManager.enabled = false;
-
-            if (ballManager != null)
-                ballManager.enabled = false;
-        
-        
-    }
 }
 
 }

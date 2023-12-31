@@ -7,11 +7,14 @@ public class BallManager : MonoBehaviour
 {
     private Rigidbody topRigidbody;
     private Vector3 firlatmaYonu;
-    private Vector3 firstPosition;
+    public Vector3 firstPosition;
     private Vector3 mouseDownPosition;
     private Vector3 mouseUpPosition;
+    public int ballCount;
+    [SerializeField] private GameObject _ballPrefab;
 
     [SerializeField, Range(0f, 250f)] private float speed;
+    
     
 
     void Start()
@@ -46,16 +49,15 @@ public class BallManager : MonoBehaviour
 
     void Firlat()
     {
-        // Topun týklanýldýðý ve býrakýldýðý noktalar arasýndaki farký hesapla
+        for (int i = 0; i <= ballCount; i++)
+        {
+            Instantiate(_ballPrefab,firstPosition,Quaternion.identity);
+        }
         Vector3 fark = mouseUpPosition - mouseDownPosition;
-
-        // Topun týklanýldýðý ve býrakýldýðý yöne gitmesini saðla
         firlatmaYonu = new Vector3(fark.x, fark.y, 0).normalized;
-
-        // Topun hýzýný ayarla ve hareketini baþlat
         topRigidbody.velocity = firlatmaYonu * speed;
     }
-
+   
     private void OnCollisionEnter(Collision collision)
     {
         Vector3 carpmaNoktasi = collision.contacts[0].point;
@@ -85,11 +87,22 @@ public class BallManager : MonoBehaviour
             topRigidbody.angularVelocity = Vector3.zero;
             transform.position = firstPosition;
             GridManager gridManager = FindObjectOfType<GridManager>();
+            ballCount++;
             if (gridManager != null)
             {
                 gridManager.ShiftPrefabsDown();
                 gridManager.updateGrid();
-            }
+            } 
+            
+
+            
+        }
+        else if (collision.gameObject.CompareTag("Plus"))
+        {
+            ballCount++;
+            Destroy(collision.gameObject);
         }
     }
+
+    
 }
