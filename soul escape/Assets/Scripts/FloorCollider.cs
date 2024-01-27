@@ -8,19 +8,14 @@ public class FloorCollider : MonoBehaviour
 {
     private int destroyingBalls;
     public int results;
+    BallController ballController;
     
     public void Start()
     {
-        BallController ballController = FindAnyObjectByType<BallController>();
-        destroyingBalls=ballController.ballCount;
-        //Debug.Log(destroyingBalls);
+        ballController = FindAnyObjectByType<BallController>(); 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     void OnCollisionEnter(Collision collision)
     {
         
@@ -32,7 +27,9 @@ public class FloorCollider : MonoBehaviour
             
             
         }
-        Debug.Log(destroyingBalls);
-        results=destroyingBalls;
+        
+            if(destroyingBalls<=1){
+            ballController.currentBallState =  BallController.ballState.aim;
+        }
     }
 }

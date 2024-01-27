@@ -32,8 +32,7 @@ public class BallController : MonoBehaviour
     [SerializeField]  private GameObject arrow;
     private Vector3 ballPos;
     private Quaternion ballRot;
-    int tempBallCount,destroyedBalls;
-
+    
     void Start()
     {
         ball = GetComponent<Rigidbody>();
@@ -41,13 +40,13 @@ public class BallController : MonoBehaviour
         currentBallState = ballState.aim;
         ballPos=transform.position;
         ballRot=transform.rotation;
-        tempBallCount=ballCount;
-        FloorCollider floorCollider = FindAnyObjectByType<FloorCollider>();
-        destroyedBalls=floorCollider.results;
+        
+        
+        
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         switch (currentBallState){
             case ballState.aim:
@@ -67,7 +66,6 @@ public class BallController : MonoBehaviour
             case ballState.fire:
             break;
             case ballState.wait:
-              
             break;
             case ballState.endShot:
             
@@ -75,10 +73,7 @@ public class BallController : MonoBehaviour
             default:
             break;
         }
-        Debug.Log("ballCount"+ballCount);
-        Debug.Log("tempball"+tempBallCount);
-        Debug.Log("destroyed"+destroyedBalls);
-
+       
         //Rigidbody rb = GetComponent<Rigidbody>();
         
          /*if (rb.velocity.magnitude > constantSpeed)
@@ -142,7 +137,7 @@ public class BallController : MonoBehaviour
 
     public void OnTriggerEnter(Collider other) {
         
-            tempBallCount++;
+            ballCount++;
             Destroy(other.gameObject);
     }
     public void OnCollisionEnter(Collision collision)
@@ -181,15 +176,7 @@ public class BallController : MonoBehaviour
                 gridManager.ShiftPrefabsDown();
                 gridManager.updateGrid();
             }
-            if (destroyedBalls==1)
-            {
-                currentBallState=ballState.aim;
-                ballCount=tempBallCount;
-                Debug.Log(currentBallState);
-            } 
-            
-            
-            
+           
         }
         
     }
