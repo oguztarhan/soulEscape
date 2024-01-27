@@ -2,34 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour
-{
-    private Rigidbody topRigidbody;
-    private Vector3 firstPosition;
-    private int ballCount;
-    private void OnCollisionEnter(Collision collision) {
-        
-        if(collision.gameObject.CompareTag("Tile"))
-        {
-            endGame();
-        }
-        
+{   
+    public void startGame(){
+        SceneManager.LoadScene(1);
     }
-    private void endGame()
-    {
-        Debug.Log("GAME OVER!");
-        //Time.timeScale=0f;
-        GridManager gridManager = FindObjectOfType<GridManager>();
-        BallManager ballManager = FindAnyObjectByType<BallManager>();
-       
-       if (gridManager!=null)
-       {
-        gridManager.gameObject.SetActive(false);
-       } 
-       if (ballManager!=null)
-       {
-        ballManager.gameObject.SetActive(false);
-       }
+    public void pauseGame(){
+        //gameObject.SetActive(true);
     }
 }

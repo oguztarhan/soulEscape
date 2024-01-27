@@ -9,6 +9,7 @@ TagManager:
   - Plus
   - Ball
   - EndLine
+  - ExtraBall
   layers:
   - Default
   - TransparentFX

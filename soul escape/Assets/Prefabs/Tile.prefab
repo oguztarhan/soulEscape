@@ -183,9 +183,9 @@ GameObject:
   - component: {fileID: 2968468446854476770}
   - component: {fileID: 6289924279506378506}
   - component: {fileID: 3597330317181588833}
-  - component: {fileID: 3094817886649104227}
-  - component: {fileID: 4571888427376943488}
+  - component: {fileID: 3049729504357235233}
   - component: {fileID: 631417287538936482}
+  - component: {fileID: 3336785083507096752}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Tile
@@ -280,7 +280,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3094817886649104227
+--- !u!114 &3049729504357235233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,30 +289,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 5732039016850014694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa8e829bcba4a294b821863d8cc1b186, type: 3}
+  m_Script: {fileID: 11500000, guid: df2ecf50b59f5e94c8532d404740e1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {fileID: 2100000, guid: 2a2ceeff3492920408237056f565085f, type: 2}
-  _offsetColor: {fileID: 2100000, guid: 2a2ceeff3492920408237056f565085f, type: 2}
-  _renderer: {fileID: 6289924279506378506}
---- !u!114 &4571888427376943488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5732039016850014694}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 3.11
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0.3441166, b: 0, a: 1}
+    key1: {r: 1, g: 0.24056602, b: 0.48551226, a: 1}
+    key2: {r: 1, g: 0.5117957, b: 0, a: 0}
+    key3: {r: 1, g: 0.8735534, b: 0, a: 0}
+    key4: {r: 0.46944016, g: 0.0039215903, b: 0.7372549, a: 0}
+    key5: {r: 0.14541142, g: 0.58431375, b: 0, a: 0}
+    key6: {r: 0.6604034, g: 0.8509804, b: 0.15686272, a: 0}
+    key7: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 0}
+    ctime0: 8482
+    ctime1: 16174
+    ctime2: 23867
+    ctime3: 32151
+    ctime4: 40435
+    ctime5: 48128
+    ctime6: 57547
+    ctime7: 62231
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 8
+    m_NumAlphaKeys: 2
 --- !u!64 &631417287538936482
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -335,3 +344,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &3336785083507096752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5732039016850014694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aca2e7703464bf47a03f0d9a349b7cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileHP: 10

@@ -183,7 +183,8 @@ GameObject:
   - component: {fileID: 6626114055058453275}
   - component: {fileID: 7206137433812196723}
   - component: {fileID: 572630448930733074}
-  - component: {fileID: 5711765755820930581}
+  - component: {fileID: 620819866941214913}
+  - component: {fileID: 3464837871014798079}
   m_Layer: 0
   m_Name: triangle 2
   m_TagString: Tile
@@ -279,7 +280,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: d2a147b0e838ca0418d3de69922997f7, type: 2}
---- !u!114 &5711765755820930581
+--- !u!114 &620819866941214913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,9 +289,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 8422332607856123786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa8e829bcba4a294b821863d8cc1b186, type: 3}
+  m_Script: {fileID: 11500000, guid: df2ecf50b59f5e94c8532d404740e1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {fileID: 2100000, guid: 2a2ceeff3492920408237056f565085f, type: 2}
-  _offsetColor: {fileID: 2100000, guid: d442475603e6ffa49b79a15b16968f7b, type: 2}
-  _renderer: {fileID: 7206137433812196723}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0.3441166, b: 0, a: 1}
+    key1: {r: 1, g: 0.24056602, b: 0.48551226, a: 1}
+    key2: {r: 1, g: 0.5117957, b: 0, a: 0}
+    key3: {r: 1, g: 0.8735534, b: 0, a: 0}
+    key4: {r: 0.46944016, g: 0.0039215903, b: 0.7372549, a: 0}
+    key5: {r: 0.14541142, g: 0.58431375, b: 0, a: 0}
+    key6: {r: 0.6604034, g: 0.8509804, b: 0.15686272, a: 0}
+    key7: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 0}
+    ctime0: 8482
+    ctime1: 16174
+    ctime2: 23867
+    ctime3: 32151
+    ctime4: 40435
+    ctime5: 48128
+    ctime6: 57547
+    ctime7: 62231
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 8
+    m_NumAlphaKeys: 2
+--- !u!114 &3464837871014798079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422332607856123786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aca2e7703464bf47a03f0d9a349b7cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileHP: 10

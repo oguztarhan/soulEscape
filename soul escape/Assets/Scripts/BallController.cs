@@ -6,45 +6,85 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    public enum ballState{
+        aim,
+        fire,
+        wait,
+        endShot
+    }
+    public ballState currentBallState;
     [SerializeField] Rigidbody ball;
+    public int maxExtraBalls=10;
+    public float timeBetweenExtraBalls = 0.5f;
     
     private Vector3 mouseStartPos;
     private Vector3 mouseEndPos;
     public Vector3 firstPosition;
-    public bool didClick;
-    public bool didDrag;
-    public int ballCount;
-    public bool canInteract;
+    public GameObject extraBall;
+  
+    
+    public int ballCount=10;
+    
     private float ballVelocityX;
     private float ballVelocityY;
+    
     [SerializeField] private float constantSpeed;
     [SerializeField]  private GameObject arrow;
+    private Vector3 ballPos;
+    private Quaternion ballRot;
+    int tempBallCount,destroyedBalls;
+
     void Start()
     {
         ball = GetComponent<Rigidbody>();
         firstPosition = transform.position;
+        currentBallState = ballState.aim;
+        ballPos=transform.position;
+        ballRot=transform.rotation;
+        tempBallCount=ballCount;
+        FloorCollider floorCollider = FindAnyObjectByType<FloorCollider>();
+        destroyedBalls=floorCollider.results;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if(Input.GetMouseButtonDown(0)&&canInteract)
-        {
-            MouseClicked();
+        switch (currentBallState){
+            case ballState.aim:
+                if(Input.GetMouseButtonDown(0))
+                {
+                   MouseClicked();
+                }
+                if(Input.GetMouseButton(0))
+                {
+                    MouseDragged();
+                }
+                if(Input.GetMouseButtonUp(0))
+                {
+                    RelaseMouse();
+                }
+            break;
+            case ballState.fire:
+            break;
+            case ballState.wait:
+              
+            break;
+            case ballState.endShot:
+            
+            break;
+            default:
+            break;
         }
-        if(Input.GetMouseButton(0)&&canInteract)
-        {
-            MouseDragged();
-        }
-        if(Input.GetMouseButtonUp(0)&&canInteract)
-        {
-            RelaseMouse();
-        }
-         if (rb.velocity.magnitude > constantSpeed)
+        Debug.Log("ballCount"+ballCount);
+        Debug.Log("tempball"+tempBallCount);
+        Debug.Log("destroyed"+destroyedBalls);
+
+        //Rigidbody rb = GetComponent<Rigidbody>();
+        
+         /*if (rb.velocity.magnitude > constantSpeed)
     {
         rb.velocity = rb.velocity.normalized * constantSpeed;
-    }
+    }*/
     }
 
     private void MouseDragged()
@@ -58,29 +98,52 @@ public class BallController : MonoBehaviour
         }
         float theta = Mathf.Rad2Deg * Mathf.Atan(diffX/diffY);
         arrow.transform.rotation=Quaternion.Euler(0f,0f,-theta);
-       didDrag=true;
-       Debug.Log("dragged");
+       
+    
     }
 
-    private void MouseClicked()
+    public void MouseClicked()
     {
         mouseStartPos=Input.mousePosition;
-        didClick=true;
-        Debug.Log(mouseStartPos);
     }
     public void RelaseMouse()
     {
         arrow.SetActive(false);
-        mouseEndPos=Input.mousePosition;
+          mouseEndPos=Input.mousePosition;
         ballVelocityX=(mouseStartPos.x-mouseEndPos.x);
         ballVelocityY=(mouseStartPos.y-mouseEndPos.y);
-        Vector3 tempVelocity=new Vector3(ballVelocityX,ballVelocityY).normalized;
+       // StopCoroutine("extraBalls");
+      /*  Vector3 tempVelocity=new Vector3(ballVelocityX,ballVelocityY).normalized;
         ball.velocity=constantSpeed*tempVelocity;
-        didClick=false;
-        didDrag=false;
-        canInteract=false;
-        Debug.Log(ball.velocity);
-        Debug.Log(mouseEndPos);
+        currentBallState=ballState.fire;*/
+        
+        Vector3 launchDirection = new Vector3(ballVelocityX, ballVelocityY).normalized;
+        Vector3 finalVelocity = constantSpeed * launchDirection;
+        ball.AddForce(finalVelocity, ForceMode.VelocityChange);
+
+        currentBallState = ballState.fire;
+       StartCoroutine(extraBalls(finalVelocity));
+        
+    }
+     IEnumerator extraBalls(Vector3 initialVelocity)
+    {
+      for (int i = 0; i < ballCount - 1; i++)
+        {
+        yield return new WaitForSeconds(timeBetweenExtraBalls);
+        GameObject extraBallInstance = Instantiate(extraBall, ballPos, ballRot);
+        Rigidbody extraBallRigidbody = extraBallInstance.GetComponent<Rigidbody>();
+        extraBallRigidbody.AddForce(initialVelocity, ForceMode.VelocityChange);
+        }
+        currentBallState=ballState.wait;
+        
+    }
+
+
+
+    public void OnTriggerEnter(Collider other) {
+        
+            tempBallCount++;
+            Destroy(other.gameObject);
     }
     public void OnCollisionEnter(Collision collision)
     {
@@ -106,24 +169,32 @@ public class BallController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("EndLine"))
         {
-            ball.velocity = Vector3.zero;
+            ball.velocity = new Vector3(0f,0f,0f);
             ball.angularVelocity = Vector3.zero;
-            transform.position = firstPosition;
+           // transform.position = firstPosition;
+           ballPos=transform.position;
+           ballRot=transform.rotation;
             GridManager gridManager = FindObjectOfType<GridManager>();
-            ballCount++;
+           
             if (gridManager != null)
             {
                 gridManager.ShiftPrefabsDown();
                 gridManager.updateGrid();
+            }
+            if (destroyedBalls==1)
+            {
+                currentBallState=ballState.aim;
+                ballCount=tempBallCount;
+                Debug.Log(currentBallState);
             } 
-            canInteract=true;
-
+            
+            
             
         }
-        else if (collision.gameObject.CompareTag("Plus"))
-        {
-            ballCount++;
-            Destroy(collision.gameObject);
-        }
+        
     }
+   /* public void DestroyExtraBalls(){
+        Destroy (GameObject.FindWithTag("ExtraBall"));
+    }*/
+   
 }

@@ -8,6 +8,6 @@ public class Tile : MonoBehaviour
     [SerializeField] private MeshRenderer _renderer;
 
     public void Init(bool isOffset){
-        _renderer.material= isOffset ? _offsetColor:_baseColor;
+      //  _renderer.material= isOffset ? _offsetColor:_baseColor;
     }
 }
