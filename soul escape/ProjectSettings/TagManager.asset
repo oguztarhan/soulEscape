@@ -14,13 +14,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - other
   - Water
   - UI
   - Ball
   - Wall
   - FloorWall
-  - 
+  - ExtraBall
   - 
   - 
   - 

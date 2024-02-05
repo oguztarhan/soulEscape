@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameOver : MonoBehaviour
 {
- 
+    public GameObject gameOverPanel;
+    [SerializeField] TextMeshProUGUI scorre;
+    GridManager gridManager;
     private void OnCollisionEnter(Collision collision) {
         
         if(collision.gameObject.CompareTag("Tile"))
@@ -13,11 +17,14 @@ public class GameOver : MonoBehaviour
         }
         
     }
+    private void Start() {
+        gameOverPanel.SetActive(false);
+    }
     private void endGame()
     {
-        Debug.Log("GAME OVER!");
-        //Time.timeScale=0f;
-        GridManager gridManager = FindObjectOfType<GridManager>();
+        gameOverPanel.SetActive(true);
+        Time.timeScale=0f;
+        gridManager = FindObjectOfType<GridManager>();
         BallController ballController = FindAnyObjectByType<BallController>();
         
        
@@ -29,5 +36,10 @@ public class GameOver : MonoBehaviour
        {
         ballController.gameObject.SetActive(false);
        }
+    }
+     
+    public void restartTheGame(){
+        SceneManager.LoadScene(1);
+            Time.timeScale = 1f;
     }
 }

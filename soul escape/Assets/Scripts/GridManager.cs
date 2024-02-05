@@ -14,7 +14,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private float randomCellProbability1 = 0.2f;
      [SerializeField] private float randomCellProbability2 = 0.2f;
      [SerializeField]  private float verticalOffset = 1.0f;
-     public int level;
+     public int level=1;
       void Start() {
         level=1;
         generateGrid();
@@ -32,7 +32,7 @@ public class GridManager : MonoBehaviour
                 {
                     var spawnedTile = Instantiate(_tilePrefab1, new Vector3(x, y),_tilePrefab1.transform.rotation);
                     spawnedTile.name = $"Tile1 {x} {y}";
-                    spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
+                    //spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
                    
                     
                 }
@@ -40,7 +40,7 @@ public class GridManager : MonoBehaviour
                 {
                     var spawnedTile = Instantiate(_tilePrefab3, new Vector3(x, y),_tilePrefab3.transform.rotation);
                     spawnedTile.name = $"Tile3 {x} {y}";
-                    spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
+                    //spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
                    
                 }
         
@@ -48,13 +48,13 @@ public class GridManager : MonoBehaviour
                 {
                     var spawnedTile = Instantiate(_tilePrefab2, new Vector3(x, y), Quaternion.identity);
                     spawnedTile.name = $"Tile2 {x} {y}";
-                    spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
+                    //spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
                     
                 }
                 else if (y>5 && plusBallCount<1)
                 {
                     var spawnedTile=Instantiate(_plusBall,new Vector3(x,y),Quaternion.identity);
-                    spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
+                    //spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
                     plusBallCount++;
                 }
             }
@@ -93,14 +93,14 @@ public class GridManager : MonoBehaviour
                 {
                     var spawnedTile = Instantiate(_tilePrefab1, new Vector3(x, y),_tilePrefab1.transform.rotation);
                     spawnedTile.name = $"Tile1 {x} {y}";
-                    spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
+                  //  spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
                    
                 }
                 else if (y > 5 && Random.value < randomCellProbability1 )
                 {
                     var spawnedTile = Instantiate(_tilePrefab3, new Vector3(x, y),_tilePrefab3.transform.rotation);
                     spawnedTile.name = $"Tile3 {x} {y}";
-                    spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
+                 //   spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
                     
                 }
                 else if (y>5 && plusBallCount<1)
@@ -108,7 +108,7 @@ public class GridManager : MonoBehaviour
                      int randomX = Random.Range(0, _width);
                     int randomY = Random.Range(0, 5);
                     var spawnedTile = Instantiate(_plusBall, new Vector3(randomX, y), Quaternion.identity);
-                    spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
+                 //   spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
                     plusBallCount++;
                 }
         
@@ -116,7 +116,7 @@ public class GridManager : MonoBehaviour
                 {
                     var spawnedTile = Instantiate(_tilePrefab2, new Vector3(x, y), Quaternion.identity);
                     spawnedTile.name = $"Tile2 {x} {y}";
-                    spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
+                 //   spawnedTile.GetComponent<Tile>()?.Init((x + y) % 2 == 1);
                     
                 }
 
